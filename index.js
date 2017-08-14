@@ -8,6 +8,10 @@ const path = require('path');
 // aplicación express
 const app = express();
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku. 3030 for local
+var port = process.env.PORT || 3030;
+
 /** Carga de middleware */
 const middleware = require('./middleware');
 middleware.useMiddleware(app);
@@ -22,5 +26,4 @@ const options = {
 app.use(express.static(path.join(__dirname,'html'), options));
 
 /** Arranque del servidor */
-app.listen(80);
-console.log('listening on port 8080');
+app.listen(port, () => console.log('Our app is running on http://localhost:' + port) );
