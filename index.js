@@ -22,5 +22,5 @@ const options = {
 app.use(express.static(path.join(__dirname,'html'), options));
 
 /** Arranque del servidor */
-app.listen(8080);
+app.listen(80);
 console.log('listening on port 8080');
