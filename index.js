@@ -8,17 +8,17 @@ const path = require('path');
 // aplicación express
 const app = express();
 
-/** Carga de módulos propios */
+/** Carga de middleware */
 const middleware = require('./middleware');
 middleware.useMiddleware(app);
 
-// Un uso muy frecuente es reservar una serie de rutas para derivarlas al disco
-// Tendremos así un directorio para contenido estático
 const options = {
         extensions: ['htm', 'html'],
         maxAge: '1d',
         setHeaders: res => res.set('x-timestamp', Date.now())
     }
+
+/** Contenido estatico */
 app.use(express.static(path.join(__dirname,'html'), options));
 
 /** Arranque del servidor */
